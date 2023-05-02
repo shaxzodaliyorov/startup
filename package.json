@@ -1,0 +1,46 @@
+{
+  "name": "stratup",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^2.5.5",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@fontsource/roboto": "^4.5.8",
+    "@graphcms/rich-text-react-renderer": "^0.6.1",
+    "date-fns": "^2.30.0",
+    "framer-motion": "^10.10.0",
+    "graphql": "^16.6.0",
+    "graphql-request": "^6.0.0",
+    "i18next": "^22.4.14",
+    "i18next-browser-languagedetector": "^7.0.1",
+    "i18next-http-backend": "^2.2.0",
+    "next": "13.2.4",
+    "nprogress": "^0.2.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-hydration-provider": "^1.0.2",
+    "react-i18next": "^12.2.0",
+    "react-icons": "^4.8.0",
+    "react-multi-carousel": "^2.8.3",
+    "react-stars": "^2.2.5"
+  },
+  "devDependencies": {
+    "@types/node": "18.15.11",
+    "@types/nprogress": "^0.2.0",
+    "@types/react": "18.0.32",
+    "@types/react-dom": "18.0.11",
+    "@types/react-stars": "^2.2.1",
+    "@typescript-eslint/eslint-plugin": "^5.57.0",
+    "@typescript-eslint/parser": "^5.57.0",
+    "eslint": "8.37.0",
+    "eslint-config-next": "13.2.4",
+    "typescript": "5.0.3"
+  }
+}
