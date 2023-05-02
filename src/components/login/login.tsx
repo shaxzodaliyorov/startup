@@ -6,7 +6,10 @@ import {
   FormLabel,
   Heading,
   HStack,
+  Icon,
   Input,
+  InputGroup,
+  InputRightElement,
   Stack,
   Text,
   useColorModeValue,
@@ -14,7 +17,14 @@ import {
 import Link from "next/link";
 import { LoginProps } from "./login.props";
 
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { useState } from "react";
+
 const Login = ({ onNavigateStateComponent }: LoginProps) => {
+  const [show, setShow] = useState<boolean>(false);
+
+  const ToggleShow = () => setShow((prev) => !prev);
+
   return (
     <Stack spacing={4}>
       <Heading
@@ -46,12 +56,22 @@ const Login = ({ onNavigateStateComponent }: LoginProps) => {
       </FormControl>
       <FormControl colorScheme={"cyan"} isRequired>
         <FormLabel>Password</FormLabel>
-        <Input
-          type={"password"}
-          focusBorderColor="cyan.400"
-          placeholder={"****"}
-          h={14}
-        />
+        <InputGroup>
+          <Input
+            type={show ? "password" : "text"}
+            focusBorderColor="cyan.400"
+            placeholder={"****"}
+            h={14}
+          />
+          <InputRightElement width="4.5rem">
+            <Icon
+              as={show ? AiOutlineEye : AiOutlineEyeInvisible}
+              cursor={"pointer"}
+              mt={4}
+              onClick={ToggleShow}
+            />
+          </InputRightElement>
+        </InputGroup>
       </FormControl>
       <HStack justify={"space-between"}>
         <Checkbox>Remember me</Checkbox>

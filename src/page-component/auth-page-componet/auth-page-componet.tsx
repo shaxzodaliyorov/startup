@@ -20,24 +20,25 @@ import AuthNavbarComponet from "./auth-navbar-componet";
 
 const AuthPageComponet = () => {
   const [state, setState] = useState<"login" | "register" | "verification">(
-    "login"
+    "register"
   );
 
   const breakpointValue = useBreakpointValue({ base: "md", md: "lg" });
-  
-  const onNavigateStateComponent = (component: "login" | "register" | "verification") => setState(component);
+
+  const onNavigateStateComponent = (
+    component: "login" | "register" | "verification"
+  ) => setState(component);
 
   const renderStateComponet = () => {
     switch (state) {
       case "login":
         return <Login onNavigateStateComponent={onNavigateStateComponent} />;
       case "register":
-        return <Register />;
+        return <Register onNavigateStateComponent={onNavigateStateComponent} />;
       case "verification":
         return <Verification />;
     }
   };
-
 
   return (
     <>
