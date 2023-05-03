@@ -14,20 +14,29 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { Login, Register, SocialMedia, Verification } from "../../components";
+import { useTranslation } from "react-i18next";
+import {
+  AccountRecovery,
+  Login,
+  Register,
+  SocialMedia,
+  Verification,
+} from "../../components";
 import { avatars } from "../../config/constants";
 import AuthNavbarComponet from "./auth-navbar-componet";
 
 const AuthPageComponet = () => {
-  const [state, setState] = useState<"login" | "register" | "verification">(
-    "register"
-  );
+  const [state, setState] = useState<
+    "login" | "register" | "verification" | "account-recovery"
+    >("account-recovery");
 
   const breakpointValue = useBreakpointValue({ base: "md", md: "lg" });
 
   const onNavigateStateComponent = (
-    component: "login" | "register" | "verification"
+    component: "login" | "register" | "verification" | "account-recovery"
   ) => setState(component);
+
+  const { t } = useTranslation();
 
   const renderStateComponet = () => {
     switch (state) {
@@ -35,6 +44,8 @@ const AuthPageComponet = () => {
         return <Login onNavigateStateComponent={onNavigateStateComponent} />;
       case "register":
         return <Register onNavigateStateComponent={onNavigateStateComponent} />;
+      case "account-recovery":
+        return <AccountRecovery onNavigateStateComponent={onNavigateStateComponent}  />;
       case "verification":
         return <Verification />;
     }
@@ -56,7 +67,7 @@ const AuthPageComponet = () => {
               lineHeight={1.1}
               fontSize={{ base: "3xl", sm: "4xl", md: "5xl", lg: "6xl" }}
             >
-              Senior web designers
+              {t("auth_page_title_1", { ns: "global" })}
               <Text
                 as={"span"}
                 bgGradient="linear(to-r, gray.400,facebook.400)"
@@ -64,7 +75,7 @@ const AuthPageComponet = () => {
               >
                 &
               </Text>
-              Full-Stack Developers
+              {t("auth_page_title_2", { ns: "global" })}
             </Heading>
             <Stack direction={"row"} spacing={4} align={"center"}>
               <AvatarGroup>
@@ -115,7 +126,7 @@ const AuthPageComponet = () => {
                   left: 0,
                 }}
               >
-                YOU
+                {t("auth_page_you", { ns: "global" })}
               </Flex>
             </Stack>
           </Stack>

@@ -1,7 +1,9 @@
 import { Box, Button, Center, HStack, position, Text } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 import { AiFillGithub, AiOutlineGoogle } from "react-icons/ai";
 
 const SocialMedia = () => {
+  const { t } = useTranslation();
   return (
     <>
       <Box
@@ -28,7 +30,7 @@ const SocialMedia = () => {
         }}
         textAlign={"center"}
       >
-        OR
+        {t("or", { ns: "global" })}
       </Box>
       <HStack>
         <Button w={"full"} colorScheme={"gray"} leftIcon={<AiFillGithub />}>

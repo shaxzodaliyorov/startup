@@ -1,5 +1,5 @@
-import { withLayout } from "../layouts/layout"
-import { CoursesPageComponent } from "../page-component"
+import { withLayout } from "../../layouts/layout"
+import { CoursesPageComponent } from "../../page-component"
 const Courses = () => {
    return (
       <>

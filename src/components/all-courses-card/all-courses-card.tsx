@@ -1,4 +1,6 @@
 import { Box, Button, Divider, Flex, Heading, HStack, Icon, Image, Stack, Text } from "@chakra-ui/react"
+import Link from "next/link"
+import { useRouter } from "next/router"
 import { useTranslation } from "react-i18next"
 import { AiOutlineClockCircle } from "react-icons/ai"
 import { BiDetail } from "react-icons/bi"
@@ -10,10 +12,15 @@ import { AllCoursesCardProps } from "./all-courses-card.props"
 
 const AllCoursesCard = ({ course }: AllCoursesCardProps): JSX.Element => {
    const { t } = useTranslation()
+
+   const router = useRouter()
+
+   const NavigateDetailed = () => router.push(`/courses/${course.slug}`)
+
    return <>
       <Box py={4} >
          <Flex gap={4} flexDirection={{ base: "column", md: "row" }} >
-            <Image src={course.image} alt={course.title} w={{ base: "100%", md: "250px" }} h={"250px"} borderRadius={"lg"} objectFit={"cover"} />
+            <Image onClick={NavigateDetailed} src={course.image} cursor={"pointer"} alt={course.title} w={{ base: "100%", md: "250px" }} h={"250px"} borderRadius={"lg"} objectFit={"cover"} />
             <Stack>
                <HStack>
                   <Text color={"#e59819"} >{course.reviewAvarage.toFixed(1)}</Text>
@@ -52,7 +59,7 @@ const AllCoursesCard = ({ course }: AllCoursesCardProps): JSX.Element => {
                   <Text fontWeight={"bold"} fontSize={"xl"} > {course.price.toLocaleString("en-US", { style: "currency", currency: "USD" })}</Text>
                   <Flex mt={{ base: 5, md: 0 }} gap={4} >
                      <Button rightIcon={<BsMinecartLoaded />} colorScheme={"cyan"} >Add To Card</Button>
-                     <Button colorScheme={"cyan"} variant={"outline"} >Detail</Button>
+                     <Button colorScheme={"cyan"} variant={"outline"} onClick={NavigateDetailed} >Detail</Button>
                   </Flex>
                </Flex>
             </Stack>

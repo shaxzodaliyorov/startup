@@ -18,11 +18,18 @@ import Link from "next/link";
 import { useState } from "react";
 import { RegisterProps } from "./register.props";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { UseShowPassword } from "../../hooks/useShowPassword";
+import { useTranslation } from "react-i18next";
 
 const Register = ({ onNavigateStateComponent }: RegisterProps) => {
-  const [show, setShow] = useState<boolean>(false);
+  const {
+    show,
+    ToggleShow,
+    showConfirm,
+    ToggleShowConfirm,
+  } = UseShowPassword();
 
-  const ToggleShow = () => setShow((prev) => !prev);
+  const { t } = useTranslation();
 
   return (
     <Stack spacing={4}>
@@ -31,7 +38,7 @@ const Register = ({ onNavigateStateComponent }: RegisterProps) => {
         lineHeight={1.1}
         fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
       >
-        Register {""}
+        {t("register_title", { ns: "global" })}
         <Text
           as={"span"}
           bgGradient="linear(to-r,gray.400,cyan.400)"
@@ -41,11 +48,12 @@ const Register = ({ onNavigateStateComponent }: RegisterProps) => {
         </Text>
       </Heading>
       <Text color={"gray.500"} fontSize={{ base: "sm", sm: "md" }}>
-        We’re happy to see you again on our platform, for getting more
-        experience please sign in on your account!
+        {t("register_description", { ns: "global" })}
       </Text>
       <FormControl colorScheme={"cyan"} isRequired>
-        <FormLabel>Email Adresss</FormLabel>
+        <FormLabel>
+          {t("register_input_confirm_password_label", { ns: "global" })}
+        </FormLabel>
         <Input
           focusBorderColor="cyan.400"
           type={"text"}
@@ -55,7 +63,9 @@ const Register = ({ onNavigateStateComponent }: RegisterProps) => {
       </FormControl>
       <HStack>
         <FormControl colorScheme={"cyan"} isRequired>
-          <FormLabel>Password</FormLabel>
+          <FormLabel>
+            {t("login_input_password_label", { ns: "global" })}
+          </FormLabel>
           <InputGroup>
             <Input
               type={show ? "password" : "text"}
@@ -74,36 +84,38 @@ const Register = ({ onNavigateStateComponent }: RegisterProps) => {
           </InputGroup>
         </FormControl>
         <FormControl colorScheme={"cyan"} isRequired>
-          <FormLabel>Confirm Password</FormLabel>
+          <FormLabel>
+            {t("register_input_confirm_password_label", { ns: "global" })}
+          </FormLabel>
           <InputGroup>
             <Input
-              type={show ? "password" : "text"}
+              type={showConfirm ? "password" : "text"}
               focusBorderColor="cyan.400"
               placeholder={"****"}
               h={14}
             />
             <InputRightElement width="4.5rem">
               <Icon
-                as={show ? AiOutlineEye : AiOutlineEyeInvisible}
+                as={showConfirm ? AiOutlineEye : AiOutlineEyeInvisible}
                 cursor={"pointer"}
                 mt={4}
-                onClick={ToggleShow}
+                onClick={ToggleShowConfirm}
               />
             </InputRightElement>
           </InputGroup>
         </FormControl>
       </HStack>
       <HStack justify={"space-between"}>
-        <Checkbox>Remember me</Checkbox>
-        <Link href={"/account-recovery"}>
-          <Box
-            as={"span"}
-            color={"cyan.500"}
-            _hover={{ textDecoration: "underline" }}
-          >
-            Forgot password?
-          </Box>
-        </Link>
+        <Checkbox>{t("auth_remember_me", { ns: "global" })}</Checkbox>
+        <Box
+          as={"span"}
+          color={"cyan.500"}
+          _hover={{ textDecoration: "underline" }}
+          cursor={"pointer"}
+          onClick={() => onNavigateStateComponent("account-recovery")}
+        >
+          {t("auth_forgot_password", { ns: "global" })}
+        </Box>
       </HStack>
       <Button
         fontFamily={"heading"}
@@ -116,10 +128,10 @@ const Register = ({ onNavigateStateComponent }: RegisterProps) => {
           boxShadow: "xl",
         }}
       >
-        Submit
+        {t("register_btn", { ns: "global" })}
       </Button>
       <Text>
-        Already have an account?{" "}
+        {t("register_already_have_account", { ns: "global" })}
         <Box
           as={"span"}
           color={"cyan.400"}
