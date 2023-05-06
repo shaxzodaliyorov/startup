@@ -14,14 +14,19 @@ import {
 import { GoPrimitiveDot } from "react-icons/go";
 import { AiFillPlayCircle } from "react-icons/ai";
 import { getLessonTime } from "../../helpers/time.helpers";
+import { useTranslation } from "react-i18next";
 
 const Curriculum = () => {
+  const { t } = useTranslation();
+
   return (
     <>
-      <Heading mt={10}>Curriculum</Heading>
+      <Heading mt={10}>{t("curriculum", { ns: "courses" })}</Heading>
       <Flex align={"center"} gap={2} mt={3}>
-        {data.length} Modules <Icon as={GoPrimitiveDot} />{" "}
-        {data.map((c) => c.lessons.length).reduce((a, b) => +a + +b, 0)} lessons
+        {data.length} {t("modules", { ns: "courses" })}{" "}
+        <Icon as={GoPrimitiveDot} />{" "}
+        {data.map((c) => c.lessons.length).reduce((a, b) => +a + +b, 0)}{" "}
+        {t("lessons", { ns: "courses" })}
       </Flex>
 
       <Accordion defaultIndex={0} allowToggle mr={2}>

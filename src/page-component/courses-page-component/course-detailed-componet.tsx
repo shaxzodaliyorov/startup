@@ -35,6 +35,7 @@ import { BiInfinite, BiTime } from "react-icons/bi";
 import { BsBarChartLine } from "react-icons/bs";
 import { TbCertificate } from "react-icons/tb";
 import { Curriculum, Mentor, Overview, Review } from "../../components";
+import { useTranslation } from "react-i18next";
 
 const CourseDetailedComponet = () => {
   const [course, setData] = useState<CourseType>();
@@ -51,6 +52,8 @@ const CourseDetailedComponet = () => {
   const tabHandler = (idx: number) => {
     setTabIndex(idx);
   };
+
+  const { t } = useTranslation();
 
   return (
     <>
@@ -114,7 +117,7 @@ const CourseDetailedComponet = () => {
                     </Text>
                   </Stack>
                   <Button mt={5} w={"full"} h={14} colorScheme={"cyan"}>
-                    Kursni Ko'rish
+                    {t("enroll", { ns: "courses" })}
                   </Button>
                   <Box>
                     <Flex
@@ -126,7 +129,7 @@ const CourseDetailedComponet = () => {
                     >
                       <Flex fontWeight={"bold"} align={"center"} gap={3}>
                         <CiViewTimeline />
-                        Lessons
+                        {t("lessons", { ns: "courses" })}
                       </Flex>
                       <Text fontWeight={"bold"}>{course?.lessonCount}</Text>
                     </Flex>
@@ -141,7 +144,7 @@ const CourseDetailedComponet = () => {
                     >
                       <Flex align={"center"} gap={3}>
                         <BiTime />
-                        Total hour
+                        {t("total_hour", { ns: "courses" })}
                       </Flex>
                       <Text>{course?.totalHour}</Text>
                     </Flex>
@@ -156,7 +159,7 @@ const CourseDetailedComponet = () => {
                     >
                       <Flex align={"center"} gap={3}>
                         <BsBarChartLine />
-                        Level
+                        {t("level", { ns: "courses" })}
                       </Flex>
                       <Text>{course?.level}</Text>
                     </Flex>
@@ -171,7 +174,7 @@ const CourseDetailedComponet = () => {
                     >
                       <Flex align={"center"} gap={3}>
                         <FaLanguage />
-                        Language
+                        {t("language", { ns: "courses" })}
                       </Flex>
                       <Text>English</Text>
                     </Flex>
@@ -186,7 +189,7 @@ const CourseDetailedComponet = () => {
                     >
                       <Flex align={"center"} gap={3}>
                         <TbCertificate />
-                        Certificate
+                        {t("sertificate", { ns: "courses" })}
                       </Flex>
                       <Text>No</Text>
                     </Flex>
@@ -201,7 +204,7 @@ const CourseDetailedComponet = () => {
                     >
                       <Flex align={"center"} gap={3}>
                         <BiInfinite />
-                        Access
+                        {t("access", { ns: "courses" })}
                       </Flex>
                       <Text>Lifetime</Text>
                     </Flex>
@@ -238,7 +241,7 @@ const CourseDetailedComponet = () => {
                 mr="2"
                 display={{ base: "none", md: "block" }}
               />
-              {item.name}
+              {t(item.name, { ns: "courses" })}
             </Tab>
           ))}
         </TabList>

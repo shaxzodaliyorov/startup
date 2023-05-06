@@ -1,8 +1,19 @@
-import { withLayout } from "../layouts/layout"
-import { PricingPageComponent } from "../page-component"
+import { useTranslation } from "react-i18next";
+import { withLayout } from "../layouts/layout";
+import Seo from "../layouts/seo/seo";
+import { PricingPageComponent } from "../page-component";
 
 const Pricing = () => {
-   return <PricingPageComponent />
-}
+  const { t } = useTranslation();
 
-export default withLayout(Pricing)
+  return (
+    <Seo
+      metaTitle={`Shaxzod | ${t("pricing_page_title", { ns: "seo" })}`}
+      metaDescription={t("pricing_page_description", { ns: "seo" }) as string}
+    >
+      <PricingPageComponent />
+    </Seo>
+  );
+};
+
+export default withLayout(Pricing);

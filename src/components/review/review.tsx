@@ -8,12 +8,15 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { format, formatDistance } from "date-fns";
+import { useTranslation } from "react-i18next";
 import ReactStars from "react-stars";
 
 const Review = () => {
+  const { t } = useTranslation();
+
   return (
     <>
-      <Heading mt={3}>Review</Heading>
+      <Heading mt={3}>{t("review", { ns: "courses" })}</Heading>
       {data.map((item, index) => (
         <Flex key={index} gap={4} mt={6} borderBottomWidth={"1px"} pb={2}>
           <Avatar

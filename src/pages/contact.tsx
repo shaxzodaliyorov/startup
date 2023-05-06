@@ -1,8 +1,19 @@
-import { withLayout } from "../layouts/layout"
-import { ContactPageComponet } from "../page-component"
+import { useTranslation } from "react-i18next";
+import { withLayout } from "../layouts/layout";
+import Seo from "../layouts/seo/seo";
+import { ContactPageComponet } from "../page-component";
 
 const Contact = () => {
-   return <ContactPageComponet />
-}
+  const { t } = useTranslation();
 
-export default withLayout(Contact)
+  return (
+    <Seo
+      metaTitle={`Shaxzod | ${t("contact_page_title", { ns: "seo" })}`}
+      metaDescription={t("contact_page_description", { ns: "seo" }) as string}
+    >
+      <ContactPageComponet />
+    </Seo>
+  );
+};
+
+export default withLayout(Contact);
