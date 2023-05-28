@@ -118,19 +118,22 @@ const ArticleDetailedPageComponent = ({ article }: ArticleDetailedProps) => {
 								<HStack
 									onClick={() => {
 										speak({
-											text: `Start Reading Article ${article.title} article ${article.discription.text}`,
+											text: `${t('start_reading_article', { ns: 'global' })} ${article.title} ${t(
+												'article',
+												{ ns: 'global' }
+											)} ${article.discription.text}`,
 											voice: myVoice,
 										});
 										startSpeak();
 									}}
 								>
 									<Icon as={AiFillPlayCircle} w={10} h={10} />
-									<Text>Play</Text>
+									<Text>{t('play', { ns: 'global' })}</Text>
 								</HStack>
 							) : (
 								<HStack onClick={cancel}>
 									<Icon as={BsFillStopCircleFill} w={10} h={10} />
-									<Text>Stop</Text>
+									<Text>{t('stop', { ns: 'global' })}</Text>
 									{speaking && isLoading && (
 										<Image
 											alt={'wave'}

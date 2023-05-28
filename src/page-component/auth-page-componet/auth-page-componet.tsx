@@ -28,7 +28,7 @@ import AuthNavbarComponet from "./auth-navbar-componet";
 const AuthPageComponet = () => {
   const [state, setState] = useState<
     "login" | "register" | "verification" | "account-recovery"
-    >("account-recovery");
+    >("login");
 
   const breakpointValue = useBreakpointValue({ base: "md", md: "lg" });
 
